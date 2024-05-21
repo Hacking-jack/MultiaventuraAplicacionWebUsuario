@@ -15,22 +15,35 @@ import {Link} from "@mui/material";
 import Precios from "./components/productos/Precios";
 
 function App() {
-    const {currentUser, logout} = useAuth();
+    const {currentUser, logout, fetchCollection } = useAuth();
     const [isCollapsed] = useState(true);
 
     const [showModal, setShowModal] = useState(false);
 
     const [loggedIn, setLoggedIn] = useState(!!currentUser);
 
+    const [actividades, setActividades] = useState([]);
+
     console.log(loggedIn)
 
     useEffect(() => {
         // Observar los cambios en currentUser y actualizar loggedIn
         setLoggedIn(!!currentUser); // !! convierte currentUser a un valor booleano
-    }, [currentUser]);
+
+        const fetchData = async () => {
+            const cardData = await fetchCollection('actividades');
+            console.log(cardData)
+            setActividades(cardData);
+        };
+
+        fetchData();
+
+    }, [currentUser,fetchCollection]);
+
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
+
 
 
     const handleLogin = async () => {
@@ -75,7 +88,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Inicio/>}/>
                     <Route path="/about" element={<About/>}/>
-                    <Route path="/precios" element={<Precios/>}/>
+                    <Route path="/precios" element={<Precios actividades={actividades} />}/>
                     <Route path="/registrate" element={<Register/>}/>
                     {loggedIn && (
                         <Route path="/reserva" element={<Reserve/>}/>
@@ -92,8 +105,7 @@ function App() {
                 </Row>
             </Container>
         </Router>
-    )
-        ;
+    );
 }
 
 export default App;

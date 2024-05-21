@@ -7,7 +7,8 @@ import {
     signInWithEmailAndPassword,
     signOut
 } from 'firebase/auth';
-import {auth} from "../utils/firebaseConfig";
+import { collection, getDocs } from 'firebase/firestore';
+import {auth,db} from "../utils/firebaseConfig";
 
 const AuthContext = React.createContext();
 
@@ -36,7 +37,14 @@ export function AuthProvider({children}) {
         setCurrentUser(null); // Establecer currentUser a null
 
     }
-
+    function fetchCollection(collectionName) {
+        return getDocs(collection(db, collectionName)).then((querySnapshot) => {
+            return querySnapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+        });
+    }
     useEffect(() => {
         // Manejar cambios en la autenticación del usuario
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -59,7 +67,8 @@ export function AuthProvider({children}) {
         currentUser,
         signup,
         login,
-        logout
+        logout,
+        fetchCollection
     };
 
     return (

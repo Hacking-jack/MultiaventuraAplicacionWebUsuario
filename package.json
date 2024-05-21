@@ -15,6 +15,7 @@
     "bootstrap": "^5.3.3",
     "firebase": "^10.11.1",
     "firebase-tools": "^13.7.5",
+    "gh-pages": "^6.1.1",
     "node-sass": "^9.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
@@ -22,13 +23,17 @@
     "react-icons": "^5.1.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.30.2",
     "sass": "^1.75.0",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
