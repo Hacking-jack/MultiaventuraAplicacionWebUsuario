@@ -4,18 +4,55 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bfd047fe-30cb-4fc5-8325-70d7e6552e1a" name="Changes" comment="first commit" />
+    <list default="true" id="bfd047fe-30cb-4fc5-8325-70d7e6552e1a" name="Changes" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/src/App.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LogIn/LogIn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LogIn/SignIn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/about/About.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/about/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/inicio/Inicio.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/inicio/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/productos/Precios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/productos/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/registrarse/Register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/registrarse/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/reserva/Reserve.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/reserva/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/contextProviders/AuthContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/firebaseConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Sass File" />
+        <option value="Python Script" />
+        <option value="JavaScript File" />
+        <option value="SCSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2fPSnHSXiKS7aG3kjnEgabtwK8D" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -26,19 +63,38 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "kotlin-language-version-configured": "true",
+    "last_directory_selection": "/home/hackingjack/tfg2024/multiaventura/src/about",
+    "last_opened_file_path": "/home/hackingjack/tfg2024/multiaventura/src/components/productos",
+    "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "/snap/pycharm-professional/387/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/productos" />
+      <recent name="$PROJECT_DIR$/src/components/reserva" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/public/icons" />
+      <recent name="$PROJECT_DIR$/src/about" />
+      <recent name="$PROJECT_DIR$/src/inicio" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-PY-241.15989.155" />
+        <option value="bundled-python-sdk-babbdf50b680-7c6932dee5e4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.15989.155" />
       </set>
     </attachedChunks>
   </component>
@@ -51,6 +107,22 @@
       <option name="presentableId" value="Default" />
       <updated>1713701385065</updated>
       <workItem from="1713701386072" duration="1740000" />
+      <workItem from="1713718262034" duration="19061000" />
+      <workItem from="1714062543053" duration="673000" />
+      <workItem from="1714063227983" duration="677000" />
+      <workItem from="1714067273475" duration="3197000" />
+      <workItem from="1714210559255" duration="2317000" />
+      <workItem from="1714216784215" duration="1334000" />
+      <workItem from="1714226528522" duration="5338000" />
+      <workItem from="1714298299632" duration="7407000" />
+      <workItem from="1714902101071" duration="8008000" />
+      <workItem from="1715335067390" duration="1131000" />
+      <workItem from="1715336267960" duration="16776000" />
+      <workItem from="1715390347931" duration="13681000" />
+      <workItem from="1715520983319" duration="787000" />
+      <workItem from="1715599798246" duration="642000" />
+      <workItem from="1715795885099" duration="11000" />
+      <workItem from="1716021997147" duration="29136000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />

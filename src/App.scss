@@ -1,0 +1,74 @@
+// Custom.scss
+$primary: #143A16 !default;
+$secondary: #31581F !default;
+$tertiary: #CCC392 !default;
+$danger: #dc3545 !default;
+$info: #3d7895 !default;
+$success: #898C3F !default;
+
+$font-family-base: (
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"'
+);
+// Option B: Include parts of Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "~bootstrap/scss/functions";
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+
+// 4. Add additional custom code here
+
+.root-container {
+  max-height: 94vh;
+  max-width: 100vw;
+  padding: 0 !important;
+}
+
+.row {
+  max-width: 100vw;
+  padding: 0 !important;
+  margin: 0;
+
+}
+.pageContainer{
+    color: white ;
+    text-align: center;
+    background-color: $secondary ;
+    height: 100vh;
+    width: 100vw;
+}
+.pageContainerFooter{
+    color: white ;
+    text-align: center;
+    background-color: $secondary ;
+    height: 92vh;
+    width: 100vw;
+}
+.pageContainerNavFooter{
+    color: white ;
+    text-align: center;
+    background-color: $secondary ;
+    height: 85.4vh;
+    width: 100vw;
+}
+.footer{
+  color :white;
+}
