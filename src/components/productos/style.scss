@@ -1,17 +1,36 @@
 @import '../../App';
-.pageContainerFooter{
-    color: white ;
-    text-align: center;
-    background-color: $secondary ;
-    height: 80vh;
-    width: 100vw;
+
+.pageContainerFooter {
+  color: white;
+  text-align: center;
+  background-color: $secondary;
+  height: 80vh;
+  width: 100vw;
 }
 
 .pageRow {
-    max-width: 95vw;
-    padding-left: 15vw !important;
-    padding-right: 15vw !important;
-    padding-top: 25vh !important;
-    padding-block: 25vh !important;
-    width: 95vw !important;
+  box-sizing: border-box;
+  justify-content: center;
+  //max-width: 95vw;
+  //max-height: 85vh;
+  //padding-left: 15vw !important;
+  //padding-right: 15vw !important;
+  //padding-top: 25vh !important;
+  //padding-block: 25vh !important;
+  //height: 85vh !important;
+  //width: 95vw !important;
+}
+
+.tarjeta {
+  box-sizing: border-box;
+  border: solid 3px white;
+  border-radius: 15px;
+  margin: 1vh;
+  height: 80vh;
+
+}
+
+.slider {
+  max-width: 85vw;
+  max-height: 85vh;
 }

@@ -1,15 +1,16 @@
 // About.js
 import React from 'react';
-import {Col, Row} from "react-bootstrap";
-import Container from "react-bootstrap/Container";
-import {FaUsers, FaBriefcase, FaLightbulb} from 'react-icons/fa';
+import './style.scss'
 
 
-const Actividad = ({nombre, descripcion}) => {
+const Actividad = ({nombre, descripcion, precioPersona, maximoIntegrantes, duracion}) => {
     return (
-        <div >
+        <div className='tarjeta'>
             <h3>{nombre}</h3>
             <p>{descripcion}</p>
+            <p>{precioPersona}</p>
+            <p>{maximoIntegrantes}</p>
+            <p>{duracion}</p>
         </div>
     );
 }

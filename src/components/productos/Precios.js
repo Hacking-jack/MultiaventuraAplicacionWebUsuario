@@ -16,6 +16,7 @@ function SampleNextArrow(props) {
             style={{...style, display: "block", background: "red"}}
             onClick={onClick}
         />
+
     );
 }
 
@@ -74,10 +75,13 @@ const Precios = ({actividades}) => {
     return (
         <div className="pageContainerNavFooter">
             <Row className='pageRow'>
-                <Slider {...settings}>
+                <Slider {...settings} className="slider" >
                     {actividades.map((actividad, index) => (
                         <div key={index}>
-                            <Actividad nombre={actividad.nombre} descripcion={actividad.descripcion}/>
+                            <Actividad nombre={actividad.nombre} descripcion={actividad.descripcion}
+                                       duracion={actividad.duracion} maximoIntegrantes={actividad.maximoIntegrantes}
+                                       precioPersona={actividad.precioPersona}
+                            />
                         </div>
                     ))}
                 </Slider>
