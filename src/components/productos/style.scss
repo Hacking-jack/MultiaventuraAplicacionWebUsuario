@@ -1,25 +1,6 @@
 @import '../../App';
 
-.pageContainerFooter {
-  color: white;
-  text-align: center;
-  background-color: $secondary;
-  height: 80vh;
-  width: 100vw;
-}
 
-.pageRow {
-  box-sizing: border-box;
-  justify-content: center;
-  //max-width: 95vw;
-  //max-height: 85vh;
-  //padding-left: 15vw !important;
-  //padding-right: 15vw !important;
-  //padding-top: 25vh !important;
-  //padding-block: 25vh !important;
-  //height: 85vh !important;
-  //width: 95vw !important;
-}
 
 .tarjeta {
   padding: 15%;
@@ -31,7 +12,8 @@
   overflow: hidden;
   word-wrap: break-word;
 }
-.tarjeta:hover{
+
+.tarjeta:hover {
   background: #8f96a3;
 
 }

@@ -22,11 +22,11 @@ const app = initializeApp(firebaseConfig);
 
 
 
-const auth = getAuth(app)
+const auth = getAuth(app) // Firebase Auth autenticacion de usuario
 
-const db = getFirestore(app);
+const db = getFirestore(app); //Firestore database ( Actividades )
 
-const realDb = getDatabase(app);
+const realDb = getDatabase(app); //Real time database ( Reservas )
 
 onAuthStateChanged(auth, (user) => {
         if (user) {

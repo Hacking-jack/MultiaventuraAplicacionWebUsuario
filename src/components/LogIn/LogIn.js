@@ -8,6 +8,8 @@ export default function Login({showModal, handleCloseModal}) {
     const passwordRef = useRef();
     const {login} = useAuth();
 
+
+
     async function handleSubmit(e) {
         e.preventDefault();
         try {

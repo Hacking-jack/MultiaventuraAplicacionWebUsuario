@@ -4,54 +4,55 @@ import './style.scss'
 
 const Inicio = () => {
     return (
-        <div>
+        <>
             <Row>
-                <Col xs={12} className='elemento'>
-                    <Carousel fade>
-                        <Carousel.Item className='parallax-layer'>
-                            <Image
-                                src="https://img.freepik.com/foto-gratis/dos-excursionistas-tirolina-aventura-contra-cielo-costa-rica_23-2148248816.jpg?t=st=1714925582~exp=1714929182~hmac=b5b8a4f094a429594f9dbfd38ef503207ba9719bdfd83b1c1aa0d7b50e1844d1&w=1380"
-                                fluid
-                                style={{height: "94vh", width: "100vw"}}
-                            />
-                            <Carousel.Caption className='caption'>
-                                <h1 className="title">¡Bienvenidos a Cabuerniaventura!</h1>
-                                <p>Somos un parque de aventuras ubicado en lo más profundo de la cordillera cantábrica.
-                                    Ofrecemos
-                                    una experiencia única llena de diversión y emoción para todas las edades.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <Image
-                                src="https://img.freepik.com/foto-gratis/vista-general-areos-cosgaya-municipio-camaleo-cantabria-espana_463209-106.jpg?t=st=1714302838~exp=1714306438~hmac=c90b8a5fd3eae8ba0b8fcd87baa3eaee79ffcafeccca11474392c5b395524945&w=1380"
-                                fluid
-                                style={{height: "94vh", width: "100vw"}}
-                            />
-                            <Carousel.Caption className='caption'>
-                                <h2 className="subtitle">Explora la naturaleza</h2>
-                                <p>Descubre la belleza natural de nuestro entorno mientras te aventuras en emocionantes
-                                    actividades
-                                    al aire libre. Desde senderismo hasta escalada, tenemos algo para todos los amantes
-                                    de la
-                                    naturaleza.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <Image
-                                src="https://img.freepik.com/foto-gratis/ninos-valientes-divirtiendose-parque-aventuras_23-2149033159.jpg?t=st=1714302904~exp=1714306504~hmac=fa3aab90d3ad348b70d3f2feef4b20d37b87d32ccac6dbe78eeaa6100742c8df&w=1380"
-                                fluid
-                                style={{height: "94vh", width: "100vw"}}
-                            />
-                            <Carousel.Caption className='caption'>
-                                <h2 className="subtitle">Emoción sin límites</h2>
-                                <p>Experimenta la adrenalina de nuestras atracciones emocionantes. Desde tirolinas
-                                    de vértigo hasta
-                                    puentes colgantes, te garantizamos una dosis de emoción que nunca
-                                    olvidarás.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                    </Carousel>
-                </Col>
+                <Carousel fade style={{padding:'0'}}>
+                    <Carousel.Item className='parallax-layer'>
+                        <Image
+                            src="https://img.freepik.com/foto-gratis/dos-excursionistas-tirolina-aventura-contra-cielo-costa-rica_23-2148248816.jpg?t=st=1714925582~exp=1714929182~hmac=b5b8a4f094a429594f9dbfd38ef503207ba9719bdfd83b1c1aa0d7b50e1844d1&w=1380"
+                            fluid
+                            style={{height: "94vh", width: "100vw"}}
+                        />
+                        <Carousel.Caption className='caption'>
+                            <h1 className="title">¡Bienvenidos a Cabuerniaventura!</h1>
+                            <p>Somos un parque de aventuras ubicado en lo más profundo de la cordillera
+                                cantábrica.
+                                Ofrecemos
+                                una experiencia única llena de diversión y emoción para todas las edades.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <Image
+                            src="https://img.freepik.com/foto-gratis/vista-general-areos-cosgaya-municipio-camaleo-cantabria-espana_463209-106.jpg?t=st=1714302838~exp=1714306438~hmac=c90b8a5fd3eae8ba0b8fcd87baa3eaee79ffcafeccca11474392c5b395524945&w=1380"
+                            fluid
+                            style={{height: "94vh", width: "100vw"}}
+                        />
+                        <Carousel.Caption className='caption'>
+                            <h2 className="subtitle">Explora la naturaleza</h2>
+                            <p>Descubre la belleza natural de nuestro entorno mientras te aventuras en
+                                emocionantes
+                                actividades
+                                al aire libre. Desde senderismo hasta escalada, tenemos algo para todos los
+                                amantes
+                                de la
+                                naturaleza.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <Image
+                            src="https://img.freepik.com/foto-gratis/ninos-valientes-divirtiendose-parque-aventuras_23-2149033159.jpg?t=st=1714302904~exp=1714306504~hmac=fa3aab90d3ad348b70d3f2feef4b20d37b87d32ccac6dbe78eeaa6100742c8df&w=1380"
+                            fluid
+                            style={{height: "94vh", width: "100vw"}}
+                        />
+                        <Carousel.Caption className='caption'>
+                            <h2 className="subtitle">Emoción sin límites</h2>
+                            <p>Experimenta la adrenalina de nuestras atracciones emocionantes. Desde tirolinas
+                                de vértigo hasta
+                                puentes colgantes, te garantizamos una dosis de emoción que nunca
+                                olvidarás.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                </Carousel>
             </Row>
             <Row>
                 <div className='pageContainerFooter' style={{paddingTop: '10vh'}}>
@@ -71,7 +72,7 @@ const Inicio = () => {
 
                 </div>
             </Row>
-        </div>
+        </>
     );
 }
 export default Inicio;

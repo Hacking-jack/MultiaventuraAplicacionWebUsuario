@@ -15,7 +15,7 @@ root.render(
             <DevSupport ComponentPreviews={ComponentPreviews}
                         useInitialHook={useInitial}
             >
-                <Router>
+                <Router >
                     <App/>
                 </Router>
             </DevSupport>

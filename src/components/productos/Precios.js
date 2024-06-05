@@ -73,7 +73,6 @@ const Precios = ({actividades}) => {
     };
 
     return (
-        <div className="pageContainerNavFooter">
             <Row className='pageRow'>
                 <Slider {...settings} className="slider" >
                     {actividades.map((actividad, index) => (
@@ -86,7 +85,7 @@ const Precios = ({actividades}) => {
                     ))}
                 </Slider>
             </Row>
-        </div>
+
     );
 }
 

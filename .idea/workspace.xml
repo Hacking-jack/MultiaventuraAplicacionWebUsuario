@@ -5,19 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bfd047fe-30cb-4fc5-8325-70d7e6552e1a" name="Changes" comment="trabajando en las actividades">
-      <change afterPath="$PROJECT_DIR$/src/dev/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dev/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dev/palette.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dev/previews.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dev/useInitial.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/rcb-settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Changes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Changes/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Changes1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Changes1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/reserva/ActCaracteristics.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/reserva/CalendarDatetimePicker.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LogIn/LogIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LogIn/LogIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/about/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/about/About.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/about/style.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inicio/Inicio.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/inicio/Inicio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/inicio/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/inicio/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/productos/Actividad.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/productos/Actividad.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/productos/Precios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/productos/Precios.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/productos/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/productos/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/registrarse/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/registrarse/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/registrarse/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/registrarse/Register.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/registrarse/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/registrarse/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/reserva/Reserve.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/reserva/Reserve.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/reserva/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/reserva/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contextProviders/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/AuthContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/firebaseConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/firebaseConfig.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,12 +52,12 @@
         <option value="Sass File" />
         <option value="Python Script" />
         <option value="SCSS File" />
-        <option value="JavaScript File" />
         <option value="com.intellij.reactbuddy.palette" />
         <option value="com.intellij.reactbuddy.previews" />
         <option value="com.intellij.reactbuddy.index" />
         <option value="com.intellij.reactbuddy.useInitial" />
         <option value="com.intellij.reactbuddy.README" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -60,6 +82,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;JavaScript Debug.Debug.executor&quot;: &quot;Debug&quot;,
+    &quot;ReactCreateComponentLastSelected&quot;: &quot;arrowFunctionComponent&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;12.22.9&quot;,
@@ -74,10 +97,19 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.React Buddy Preview.executor&quot;: &quot;Run&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.deploy.executor&quot;: &quot;Run&quot;,
     &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;JavaScript.Libraries&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/377/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
+    ]
   }
 }</component>
   <component name="ReactDesignerToolWindowState">
@@ -109,6 +141,26 @@
     <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000" useFirstLineBreakpoints="true">
       <method v="2" />
     </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -122,6 +174,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -164,6 +218,11 @@
       <workItem from="1716566319362" duration="53000" />
       <workItem from="1716734162799" duration="519000" />
       <workItem from="1716734692193" duration="4963000" />
+      <workItem from="1717260272080" duration="7994000" />
+      <workItem from="1717274684193" duration="11895000" />
+      <workItem from="1717324692011" duration="15928000" />
+      <workItem from="1717402245605" duration="13240000" />
+      <workItem from="1717489160329" duration="1405000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
