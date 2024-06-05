@@ -1,0 +1,581 @@
+Index: src/components/registrarse/style.scss
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@import '../../App';\n\n.registration-form-container {\n  padding-top: 25vh;\n}\n\n.form-floating {\n  color: #8f96a3;\n}\n\n.form-control-custom {\n    width: 100%;\n    height: 12vh;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/registrarse/style.scss b/src/components/registrarse/style.scss
+--- a/src/components/registrarse/style.scss	(revision c5bc5cc56669f7c651e9875d01fa2b61696ccf89)
++++ b/src/components/registrarse/style.scss	(date 1716738350808)
+@@ -1,14 +1,46 @@
+ @import '../../App';
+ 
+ .registration-form-container {
+-  padding-top: 25vh;
++    padding-top: 25vh;
+ }
+ 
+-.form-floating {
+-  color: #8f96a3;
+-}
+-
+ .form-control-custom {
+     width: 100%;
+     height: 12vh;
+-}
+\ No newline at end of file
++}
++
++.error-message {
++    color: red;
++    font-size: 14px;
++    margin-bottom: 15px;
++    white-space: pre-wrap; /* Permite los saltos de línea */
++}
++
++/* Ajusta el tamaño de todos los FloatingLabel para que sean uniformes */
++.floating-label-custom .form-control,
++.floating-label-custom .form-select {
++    height: calc(3.5rem + 2px);
++    overflow: hidden;
++    white-space: nowrap;
++    text-overflow: ellipsis;
++}
++
++/* Asegura que los inputs sean del mismo tamaño */
++.floating-label-custom {
++    width: 100%;
++    height: 4rem; /* Ajusta la altura según sea necesario */
++}
++
++input[type="text"], input[type="email"], input[type="password"] {
++    width: 100%;
++    box-sizing: border-box;
++    overflow: hidden;
++    white-space: nowrap;
++    text-overflow: ellipsis;
++}
++
++.btn {
++    white-space: nowrap;
++    text-overflow: ellipsis;
++    overflow: hidden;
++}
+Index: src/components/registrarse/Register.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// src/components/Auth/Register.js\nimport React, { useState, useRef } from 'react';\nimport { Button, FloatingLabel, Form, Container, Row, Col, Stack, InputGroup } from \"react-bootstrap\";\nimport { BsFillEyeFill, BsFillEyeSlashFill } from \"react-icons/bs\";\nimport './style.scss';\nimport {useAuth} from \"../../contextProviders/AuthContext\";\n\nconst Register = () => {\n    const [showPassword, setShowPassword] = useState(false);\n    const [showConfirmPassword, setShowConfirmPassword] = useState(false);\n    const [error, setError] = useState('');\n    const emailRef = useRef();\n    const passwordRef = useRef();\n    const confirmPasswordRef = useRef();\n    const { signup } = useAuth();\n\n    const togglePasswordVisibility = () => {\n        setShowPassword(!showPassword);\n    };\n\n    const toggleConfirmPasswordVisibility = () => {\n        setShowConfirmPassword(!showConfirmPassword);\n    };\n\n    async function handleSubmit(e) {\n        e.preventDefault();\n        if (passwordRef.current.value !== confirmPasswordRef.current.value) {\n            return setError('Passwords do not match');\n        }\n\n        try {\n            setError('');\n            await signup(emailRef.current.value, passwordRef.current.value);\n        } catch {\n            setError('Failed to create an account');\n        }\n    }\n\n    return (\n        <div className=\"pageContainerNavFooter\">\n            <Row>\n                <Col xs={12} md={8}>\n                    <Form onSubmit={handleSubmit}>\n                        {error && <div className=\"error-message\">{error}</div>}\n                        <FloatingLabel controlId=\"floatingName\" label=\"Nombre\" className=\"mb-3\">\n                            <Form.Control size=\"sm\" type=\"text\" placeholder=\"Nombre\" required />\n                        </FloatingLabel>\n\n                        <FloatingLabel controlId=\"floatingEmail\" label=\"Correo Electrónico\" className=\"mb-3\">\n                            <Form.Control size=\"sm\" type=\"email\" placeholder=\"Correo Electrónico\" ref={emailRef} required />\n                        </FloatingLabel>\n\n                        <FloatingLabel controlId=\"floatingPassword\" label=\"Contraseña\" className=\"mb-3\">\n                            <InputGroup>\n                                <Form.Control\n                                    type={showPassword ? 'text' : 'password'}\n                                    placeholder=\"Contraseña\"\n                                    ref={passwordRef}\n                                    required\n                                />\n                                <Button variant=\"outline-secondary\" onClick={togglePasswordVisibility}>\n                                    {showPassword ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}\n                                </Button>\n                            </InputGroup>\n                        </FloatingLabel>\n\n                        <FloatingLabel controlId=\"floatingConfirmPassword\" label=\"Confirmar Contraseña\" className=\"mb-3\">\n                            <InputGroup>\n                                <Form.Control\n                                    type={showConfirmPassword ? 'text' : 'password'}\n                                    placeholder=\"Confirmar Contraseña\"\n                                    ref={confirmPasswordRef}\n                                    required\n                                />\n                                <Button variant=\"outline-secondary\" onClick={toggleConfirmPasswordVisibility}>\n                                    {showConfirmPassword ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}\n                                </Button>\n                            </InputGroup>\n                        </FloatingLabel>\n\n                        <Button variant=\"primary\" type=\"submit\">\n                            Registrarse\n                        </Button>\n                    </Form>\n                </Col>\n            </Row>\n        </div>\n    );\n}\n\nexport default Register;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/registrarse/Register.js b/src/components/registrarse/Register.js
+--- a/src/components/registrarse/Register.js	(revision c5bc5cc56669f7c651e9875d01fa2b61696ccf89)
++++ b/src/components/registrarse/Register.js	(date 1716739655736)
+@@ -38,19 +38,23 @@
+ 
+     return (
+         <div className="pageContainerNavFooter">
+-            <Row>
++            <Row className='justify-content-center' >
+                 <Col xs={12} md={8}>
+-                    <Form onSubmit={handleSubmit}>
++                    <Form onSubmit={handleSubmit} style={{padding:'15%'}}>
+                         {error && <div className="error-message">{error}</div>}
+-                        <FloatingLabel controlId="floatingName" label="Nombre" className="mb-3">
+-                            <Form.Control size="sm" type="text" placeholder="Nombre" required />
++
++                        <FloatingLabel controlId="floatingName" label="Nombre" className="mb-3 floating-label-custom">
++                            <Form.Control size="sm" type="text" placeholder="Nombre" required/>
+                         </FloatingLabel>
+ 
+-                        <FloatingLabel controlId="floatingEmail" label="Correo Electrónico" className="mb-3">
+-                            <Form.Control size="sm" type="email" placeholder="Correo Electrónico" ref={emailRef} required />
++                        <FloatingLabel controlId="floatingEmail" label="Correo Electrónico"
++                                       className="mb-3 floating-label-custom">
++                            <Form.Control size="sm" type="email" placeholder="Correo Electrónico" ref={emailRef}
++                                          required/>
+                         </FloatingLabel>
+ 
+-                        <FloatingLabel controlId="floatingPassword" label="Contraseña" className="mb-3">
++                        <FloatingLabel controlId="floatingPassword" label="Contraseña"
++                                       className="mb-3 floating-label-custom">
+                             <InputGroup>
+                                 <Form.Control
+                                     type={showPassword ? 'text' : 'password'}
+@@ -58,13 +62,14 @@
+                                     ref={passwordRef}
+                                     required
+                                 />
+-                                <Button variant="outline-secondary" onClick={togglePasswordVisibility}>
+-                                    {showPassword ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
++                                <Button variant="outline-secondary" onClick={togglePasswordVisibility} style={{border:'1px white'}}>
++                                    {showPassword ? <BsFillEyeSlashFill/> : <BsFillEyeFill/>}
+                                 </Button>
+                             </InputGroup>
+                         </FloatingLabel>
+ 
+-                        <FloatingLabel controlId="floatingConfirmPassword" label="Confirmar Contraseña" className="mb-3">
++                        <FloatingLabel controlId="floatingConfirmPassword" label="Confirmar Contraseña"
++                                       className="mb-3 floating-label-custom">
+                             <InputGroup>
+                                 <Form.Control
+                                     type={showConfirmPassword ? 'text' : 'password'}
+@@ -73,7 +78,7 @@
+                                     required
+                                 />
+                                 <Button variant="outline-secondary" onClick={toggleConfirmPasswordVisibility}>
+-                                    {showConfirmPassword ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
++                                    {showConfirmPassword ? <BsFillEyeSlashFill/> : <BsFillEyeFill/>}
+                                 </Button>
+                             </InputGroup>
+                         </FloatingLabel>
+Index: src/dev/previews.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/dev/previews.jsx b/src/dev/previews.jsx
+new file mode 100644
+--- /dev/null	(date 1716735276373)
++++ b/src/dev/previews.jsx	(date 1716735276373)
+@@ -0,0 +1,18 @@
++import {ComponentPreview, Previews} from '@react-buddy/ide-toolbox'
++import {ExampleLoaderComponent, PaletteTree} from './palette'
++import Actividad from "../components/productos/Actividad";
++
++const ComponentPreviews = () => {
++    return (
++        <Previews palette={<PaletteTree/>}>
++            <ComponentPreview path="/ExampleLoaderComponent">
++                <ExampleLoaderComponent/>
++            </ComponentPreview>
++            <ComponentPreview path="/Actividad">
++                <Actividad/>
++            </ComponentPreview>
++        </Previews>
++    )
++}
++
++export default ComponentPreviews
+\ No newline at end of file
+Index: src/dev/palette.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/dev/palette.jsx b/src/dev/palette.jsx
+new file mode 100644
+--- /dev/null	(date 1716735112973)
++++ b/src/dev/palette.jsx	(date 1716735112973)
+@@ -0,0 +1,27 @@
++import {Fragment} from "react"
++import {
++    Category,
++    Component,
++    Variant,
++    Palette,
++} from "@react-buddy/ide-toolbox"
++import MUIPalette from "@react-buddy/palette-mui";
++
++export const PaletteTree = () => (
++    <Palette>
++        <Category name="App">
++            <Component name="Loader">
++                <Variant>
++                    <ExampleLoaderComponent/>
++                </Variant>
++            </Component>
++        </Category>
++        <MUIPalette/>
++    </Palette>
++)
++
++export function ExampleLoaderComponent() {
++    return (
++        <Fragment>Loading...</Fragment>
++    )
++}
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"bfd047fe-30cb-4fc5-8325-70d7e6552e1a\" name=\"Changes\" comment=\"trabajando en las actividades\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/components/productos/Actividad.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/components/productos/Actividad.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/components/productos/Precios.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/components/productos/Precios.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/components/productos/style.scss\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/components/productos/style.scss\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Sass File\" />\n        <option value=\"Python Script\" />\n        <option value=\"SCSS File\" />\n        <option value=\"JavaScript File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 1\n}</component>\n  <component name=\"ProjectId\" id=\"2fPSnHSXiKS7aG3kjnEgabtwK8D\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"JavaScript Debug.Debug.executor\": \"Debug\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\",\n    \"kotlin-language-version-configured\": \"true\",\n    \"last_directory_selection\": \"/home/hackingjack/tfg2024/multiaventura/src/about\",\n    \"last_opened_file_path\": \"/home/hackingjack/tfg2024/multiaventura/src/components/productos\",\n    \"list.type.of.created.stylesheet\": \"SCSS\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\",\n    \"ts.external.directory.path\": \"/snap/webstorm/373/plugins/javascript-plugin/jsLanguageServicesImpl/external\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"ReactDesignerToolWindowState\">\n    <option name=\"myId2Visible\">\n      <map>\n        <entry key=\"com.haulmont.rcb.reactComponents\" value=\"false\" />\n        <entry key=\"com.haulmont.rcb.reactInspector\" value=\"false\" />\n        <entry key=\"com.intellij.reactbuddy.reactComponents\" value=\"false\" />\n        <entry key=\"com.intellij.reactbuddy.reactInspector\" value=\"false\" />\n        <entry key=\"com.intellij.reactbuddy.storybook\" value=\"false\" />\n      </map>\n    </option>\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/components/productos\" />\n      <recent name=\"$PROJECT_DIR$/src/components/reserva\" />\n      <recent name=\"$PROJECT_DIR$/public\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/components\" />\n      <recent name=\"$PROJECT_DIR$/src\" />\n      <recent name=\"$PROJECT_DIR$/public/icons\" />\n      <recent name=\"$PROJECT_DIR$/src/about\" />\n      <recent name=\"$PROJECT_DIR$/src/inicio\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"Debug\" type=\"JavascriptDebugType\" uri=\"http://localhost:3000\" useFirstLineBreakpoints=\"true\">\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"bfd047fe-30cb-4fc5-8325-70d7e6552e1a\" name=\"Changes\" comment=\"\" />\n      <created>1713701385065</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1713701385065</updated>\n      <workItem from=\"1713701386072\" duration=\"1740000\" />\n      <workItem from=\"1713718262034\" duration=\"19061000\" />\n      <workItem from=\"1714062543053\" duration=\"673000\" />\n      <workItem from=\"1714063227983\" duration=\"677000\" />\n      <workItem from=\"1714067273475\" duration=\"3197000\" />\n      <workItem from=\"1714210559255\" duration=\"2317000\" />\n      <workItem from=\"1714216784215\" duration=\"1334000\" />\n      <workItem from=\"1714226528522\" duration=\"5338000\" />\n      <workItem from=\"1714298299632\" duration=\"7407000\" />\n      <workItem from=\"1714902101071\" duration=\"8008000\" />\n      <workItem from=\"1715335067390\" duration=\"1131000\" />\n      <workItem from=\"1715336267960\" duration=\"16776000\" />\n      <workItem from=\"1715390347931\" duration=\"13681000\" />\n      <workItem from=\"1715520983319\" duration=\"787000\" />\n      <workItem from=\"1715599798246\" duration=\"642000\" />\n      <workItem from=\"1715795885099\" duration=\"11000\" />\n      <workItem from=\"1716021997147\" duration=\"29136000\" />\n      <workItem from=\"1716284300151\" duration=\"10660000\" />\n      <workItem from=\"1716321148317\" duration=\"68000\" />\n      <workItem from=\"1716321222324\" duration=\"5353000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"first commit\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1713701610550</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1713701610550</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"first commit\" />\n    <MESSAGE value=\"trabajando en las actividades\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"trabajando en las actividades\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c5bc5cc56669f7c651e9875d01fa2b61696ccf89)
++++ b/.idea/workspace.xml	(date 1716739656084)
+@@ -5,10 +5,19 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="bfd047fe-30cb-4fc5-8325-70d7e6552e1a" name="Changes" comment="trabajando en las actividades">
++      <change afterPath="$PROJECT_DIR$/src/dev/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/dev/index.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/dev/palette.jsx" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/dev/previews.jsx" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/dev/useInitial.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/components/productos/Actividad.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/productos/Actividad.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/components/productos/Precios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/productos/Precios.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/components/productos/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/productos/style.scss" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/components/registrarse/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/registrarse/Register.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/components/registrarse/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/registrarse/style.scss" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -22,6 +31,11 @@
+         <option value="Python Script" />
+         <option value="SCSS File" />
+         <option value="JavaScript File" />
++        <option value="com.intellij.reactbuddy.palette" />
++        <option value="com.intellij.reactbuddy.previews" />
++        <option value="com.intellij.reactbuddy.index" />
++        <option value="com.intellij.reactbuddy.useInitial" />
++        <option value="com.intellij.reactbuddy.README" />
+       </list>
+     </option>
+   </component>
+@@ -48,6 +62,8 @@
+     "JavaScript Debug.Debug.executor": "Debug",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "WebServerToolWindowFactoryState": "false",
++    "javascript.nodejs.core.library.configured.version": "12.22.9",
++    "javascript.nodejs.core.library.typings.version": "12.20.55",
+     "kotlin-language-version-configured": "true",
+     "last_directory_selection": "/home/hackingjack/tfg2024/multiaventura/src/about",
+     "last_opened_file_path": "/home/hackingjack/tfg2024/multiaventura/src/components/productos",
+@@ -57,8 +73,10 @@
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
+     "nodejs_package_manager_path": "npm",
++    "npm.React Buddy Preview.executor": "Run",
++    "npm.start.executor": "Run",
+     "settings.editor.selected.configurable": "preferences.pluginManager",
+-    "ts.external.directory.path": "/snap/webstorm/373/plugins/javascript-plugin/jsLanguageServicesImpl/external",
++    "ts.external.directory.path": "/snap/webstorm/377/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+     "vue.rearranger.settings.migration": "true"
+   }
+ }]]></component>
+@@ -87,15 +105,30 @@
+       <recent name="$PROJECT_DIR$/src/inicio" />
+     </key>
+   </component>
+-  <component name="RunManager">
++  <component name="RunManager" selected="npm.start">
+     <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000" useFirstLineBreakpoints="true">
+       <method v="2" />
+     </configuration>
++    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
++      <package-json value="$PROJECT_DIR$/package.json" />
++      <command value="run" />
++      <scripts>
++        <script value="start" />
++      </scripts>
++      <node-interpreter value="project" />
++      <envs />
++      <method v="2" />
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="npm.start" />
++      </list>
++    </recent_temporary>
+   </component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
++        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -127,6 +160,10 @@
+       <workItem from="1716284300151" duration="10660000" />
+       <workItem from="1716321148317" duration="68000" />
+       <workItem from="1716321222324" duration="5353000" />
++      <workItem from="1716397591996" duration="775000" />
++      <workItem from="1716566319362" duration="53000" />
++      <workItem from="1716734162799" duration="519000" />
++      <workItem from="1716734692193" duration="4963000" />
+     </task>
+     <task id="LOCAL-00001" summary="first commit">
+       <option name="closed" value="true" />
+Index: package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package-lock.json b/package-lock.json
+--- a/package-lock.json	(revision c5bc5cc56669f7c651e9875d01fa2b61696ccf89)
++++ b/package-lock.json	(date 1716735047753)
+@@ -14,6 +14,8 @@
+         "@fontsource/roboto": "^5.0.13",
+         "@mui/icons-material": "^5.15.15",
+         "@mui/material": "^5.15.15",
++        "@react-buddy/ide-toolbox": "^2.4.0",
++        "@react-buddy/palette-mui": "^5.0.1",
+         "@testing-library/jest-dom": "^5.17.0",
+         "@testing-library/react": "^13.4.0",
+         "@testing-library/user-event": "^13.5.0",
+@@ -4890,6 +4892,27 @@
+         "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0"
+       }
+     },
++    "node_modules/@react-buddy/ide-toolbox": {
++      "version": "2.4.0",
++      "resolved": "https://registry.npmjs.org/@react-buddy/ide-toolbox/-/ide-toolbox-2.4.0.tgz",
++      "integrity": "sha512-TWHX6gwa0Gop7215uHhjFMbYLLdjM/b9rr0wYE3E0m7GNJ56gbPpbZiq86w9uI8zksl827acqGeT437MkuO64w==",
++      "peerDependencies": {
++        "react": "^17.0.0 || ^18.0.0"
++      }
++    },
++    "node_modules/@react-buddy/palette-mui": {
++      "version": "5.0.2",
++      "resolved": "https://registry.npmjs.org/@react-buddy/palette-mui/-/palette-mui-5.0.2.tgz",
++      "integrity": "sha512-X9gdm+fwmvZTiOMWtCtljyJtSEYNH2F6qHtmht7liQUkNW8e61icu2vfLWYtwz9XG1QxFuPbev5RCsh/+Ewldw==",
++      "dependencies": {
++        "@react-buddy/ide-toolbox": "^2.4.0"
++      },
++      "peerDependencies": {
++        "@mui/icons-material": "^5.0.1",
++        "@mui/material": "^5.0.1",
++        "react": "^17.0.0 || ^18.0.0"
++      }
++    },
+     "node_modules/@remix-run/router": {
+       "version": "1.15.3",
+       "resolved": "https://registry.npmjs.org/@remix-run/router/-/router-1.15.3.tgz",
+Index: src/dev/README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/dev/README.md b/src/dev/README.md
+new file mode 100644
+--- /dev/null	(date 1716735031393)
++++ b/src/dev/README.md	(date 1716735031393)
+@@ -0,0 +1,70 @@
++This directory contains utility files which enable some visual features of the
++[React Buddy](https://plugins.jetbrains.com/plugin/17467-react-buddy/) plugin.
++Files in the directory should be committed to source control.
++
++React Buddy palettes describe reusable components and building blocks. `React Palette` tool window becomes available
++when an editor with React components is active. You can drag and drop items from the tool window to the code editor or
++JSX Outline. Alternatively, you can insert components from the palette using code generation
++action (`alt+insert` / `⌘ N`).
++
++Add components to the palette using `Add to React Palette` intention or via palette editor (look for the corresponding
++link in `palette.tsx`). There are some ready-to-use palettes for popular React libraries which are published as npm
++packages and can be added as a dependency:
++
++```jsx
++import AntdPalette from "@react-buddy/palette-antd";
++import ReactIntlPalette from "@react-buddy/palette-react-intl";
++
++export const PaletteTree = () => (
++  <Palette>
++    <AntdPalette/> 
++    <ReactIntlPalette/>
++    <Category name="App templates">
++      <Component name="Card">
++        <Variant name="Loading">
++          <Card title="Card title">
++            <Skeleton loading={true} avatar active>
++                Card content
++            </Skeleton>
++          </Card>
++        </Variant>
++      </Component>
++      <Component name="Form">
++        <Variant proto={FormTemplate}/>
++      </Component>
++    </Category>
++  </Palette>
++)
++```
++
++React Buddy explicitly registers any previewed component in the `previews.tsx` file so that you can specify required
++props.
++
++```jsx
++<ComponentPreview path="/Page">
++    <Page title={'Hello'}/>
++</ComponentPreview>
++```
++
++You can add some global initialization logic for the preview mode in `useInitital.ts`,
++e.g. implicitly obtain user session:
++
++```typescript
++export const useInitial: () => InitialHookStatus = () => {
++    const [loading, setLoading] = useState<boolean>(false);
++    const [error, setError] = useState<boolean>(false);
++
++    useEffect(() => {
++        setLoading(true);
++        async function login() {
++            const response = await loginRequest(DEV_LOGIN, DEV_PASSWORD);
++            if (response?.status !== 200) {
++                setError(true);
++            }
++            setLoading(false);
++        }
++        login();
++    }, []);
++    return { loading, error };
++};
++```
+\ No newline at end of file
+Index: src/dev/useInitial.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/dev/useInitial.js b/src/dev/useInitial.js
+new file mode 100644
+--- /dev/null	(date 1716735031417)
++++ b/src/dev/useInitial.js	(date 1716735031417)
+@@ -0,0 +1,15 @@
++import {useState} from 'react'
++
++export const useInitial = () => {
++    const [status, setStatus] = useState({
++        loading: false,
++        error: false
++    })
++    /*
++      Implement hook functionality here.
++      If you need to execute async operation, set loading to true and when it's over, set loading to false.
++      If you caught some errors, set error status to true.
++      Initial hook is considered to be successfully completed if it will return {loading: false, error: false}.
++    */
++    return status
++}
+Index: src/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport './index.css';\nimport App from './App';\nimport reportWebVitals from './reportWebVitals';\nimport {AuthProvider} from \"./contextProviders/AuthContext\";\n\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(\n    <React.StrictMode>\n        <AuthProvider>\n            <App/>\n        </AuthProvider>\n    </React.StrictMode>\n);\n\n// If you want to start measuring performance in your app, pass a function\n// to log results (for example: reportWebVitals(console.log))\n// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals\nreportWebVitals();\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/index.js b/src/index.js
+--- a/src/index.js	(revision c5bc5cc56669f7c651e9875d01fa2b61696ccf89)
++++ b/src/index.js	(date 1716735112981)
+@@ -4,12 +4,18 @@
+ import App from './App';
+ import reportWebVitals from './reportWebVitals';
+ import {AuthProvider} from "./contextProviders/AuthContext";
++import {DevSupport} from "@react-buddy/ide-toolbox";
++import {ComponentPreviews, useInitial} from "./dev";
+ 
+ const root = ReactDOM.createRoot(document.getElementById('root'));
+ root.render(
+     <React.StrictMode>
+         <AuthProvider>
+-            <App/>
++            <DevSupport ComponentPreviews={ComponentPreviews}
++                        useInitialHook={useInitial}
++            >
++                <App/>
++            </DevSupport>
+         </AuthProvider>
+     </React.StrictMode>
+ );
+Index: src/components/productos/Actividad.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// About.js\nimport React from 'react';\nimport './style.scss'\n\n\nconst Actividad = ({nombre, descripcion, precioPersona, maximoIntegrantes, duracion}) => {\n    return (\n        <div className='tarjeta'>\n            <h3>{nombre}</h3>\n            <p>{descripcion}</p>\n            <p>{precioPersona}</p>\n            <p>{maximoIntegrantes}</p>\n            <p>{duracion}</p>\n        </div>\n    );\n}\n\nexport default Actividad;\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/productos/Actividad.js b/src/components/productos/Actividad.js
+--- a/src/components/productos/Actividad.js	(revision c5bc5cc56669f7c651e9875d01fa2b61696ccf89)
++++ b/src/components/productos/Actividad.js	(date 1716735342777)
+@@ -8,9 +8,10 @@
+         <div className='tarjeta'>
+             <h3>{nombre}</h3>
+             <p>{descripcion}</p>
+-            <p>{precioPersona}</p>
+-            <p>{maximoIntegrantes}</p>
+-            <p>{duracion}</p>
++            <p>Precio por persona:{precioPersona}</p>
++            <p>Numero de integrantes:{maximoIntegrantes}</p>
++            <p>Duracion estimada:{duracion}</p>
++
+         </div>
+     );
+ }
+Index: src/components/productos/style.scss
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@import '../../App';\n\n.pageContainerFooter {\n  color: white;\n  text-align: center;\n  background-color: $secondary;\n  height: 80vh;\n  width: 100vw;\n}\n\n.pageRow {\n  box-sizing: border-box;\n  justify-content: center;\n  //max-width: 95vw;\n  //max-height: 85vh;\n  //padding-left: 15vw !important;\n  //padding-right: 15vw !important;\n  //padding-top: 25vh !important;\n  //padding-block: 25vh !important;\n  //height: 85vh !important;\n  //width: 95vw !important;\n}\n\n.tarjeta {\n  box-sizing: border-box;\n  border: solid 3px white;\n  border-radius: 15px;\n  margin: 1vh;\n  height: 80vh;\n\n}\n\n.slider {\n  max-width: 85vw;\n  max-height: 85vh;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/productos/style.scss b/src/components/productos/style.scss
+--- a/src/components/productos/style.scss	(revision c5bc5cc56669f7c651e9875d01fa2b61696ccf89)
++++ b/src/components/productos/style.scss	(date 1716736787953)
+@@ -22,11 +22,17 @@
+ }
+ 
+ .tarjeta {
++  padding: 15%;
+   box-sizing: border-box;
+   border: solid 3px white;
+   border-radius: 15px;
+   margin: 1vh;
+   height: 80vh;
++  overflow: hidden;
++  word-wrap: break-word;
++}
++.tarjeta:hover{
++  background: #8f96a3;
+ 
+ }
+ 
+Index: src/dev/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/dev/index.js b/src/dev/index.js
+new file mode 100644
+--- /dev/null	(date 1716735029981)
++++ b/src/dev/index.js	(date 1716735029981)
+@@ -0,0 +1,9 @@
++import React from "react"
++import {useInitial} from "./useInitial"
++
++const ComponentPreviews = React.lazy(() => import("./previews"))
++
++export {
++    ComponentPreviews,
++    useInitial
++}
+\ No newline at end of file
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"name\": \"multiaventura\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"dependencies\": {\n    \"@babel/plugin-proposal-private-property-in-object\": \"^7.21.11\",\n    \"@emotion/react\": \"^11.11.4\",\n    \"@emotion/styled\": \"^11.11.5\",\n    \"@fontsource/roboto\": \"^5.0.13\",\n    \"@mui/icons-material\": \"^5.15.15\",\n    \"@mui/material\": \"^5.15.15\",\n    \"@testing-library/jest-dom\": \"^5.17.0\",\n    \"@testing-library/react\": \"^13.4.0\",\n    \"@testing-library/user-event\": \"^13.5.0\",\n    \"bootstrap\": \"^5.3.3\",\n    \"firebase\": \"^10.11.1\",\n    \"firebase-tools\": \"^13.7.5\",\n    \"gh-pages\": \"^6.1.1\",\n    \"node-sass\": \"^9.0.0\",\n    \"react\": \"^18.2.0\",\n    \"react-bootstrap\": \"^2.10.2\",\n    \"react-dom\": \"^18.2.0\",\n    \"react-icons\": \"^5.1.0\",\n    \"react-router-dom\": \"^6.22.3\",\n    \"react-scripts\": \"5.0.1\",\n    \"react-slick\": \"^0.30.2\",\n    \"sass\": \"^1.75.0\",\n    \"slick-carousel\": \"^1.8.1\",\n    \"web-vitals\": \"^2.1.4\"\n  },\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test\",\n    \"predeploy\" : \"npm run build\",\n    \"deploy\" : \"gh-pages -d build\",\n    \"eject\": \"react-scripts eject\"\n  },\n  \"eslintConfig\": {\n    \"extends\": [\n      \"react-app\",\n      \"react-app/jest\"\n    ]\n  },\n  \"browserslist\": {\n    \"production\": [\n      \">0.2%\",\n      \"not dead\",\n      \"not op_mini all\"\n    ],\n    \"development\": [\n      \"last 1 chrome version\",\n      \"last 1 firefox version\",\n      \"last 1 safari version\"\n    ]\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package.json b/package.json
+--- a/package.json	(revision c5bc5cc56669f7c651e9875d01fa2b61696ccf89)
++++ b/package.json	(date 1716735031421)
+@@ -26,7 +26,9 @@
+     "react-slick": "^0.30.2",
+     "sass": "^1.75.0",
+     "slick-carousel": "^1.8.1",
+-    "web-vitals": "^2.1.4"
++    "web-vitals": "^2.1.4",
++    "@react-buddy/ide-toolbox": "^2.4.0",
++    "@react-buddy/palette-mui": "^5.0.1"
+   },
+   "scripts": {
+     "start": "react-scripts start",

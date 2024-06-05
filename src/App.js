@@ -1,5 +1,5 @@
 import './App.scss';
-import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom';
+import {Route, Routes, useNavigate} from 'react-router-dom';
 import Inicio from './components/inicio/Inicio';
 import About from "./components/about/About";
 import Register from './components/registrarse/Register';
@@ -11,10 +11,10 @@ import {Button, Row} from "react-bootstrap";
 import Login from "./components/LogIn/LogIn";
 import Reserve from "./components/reserva/Reserve";
 import {useAuth} from "./contextProviders/AuthContext";
-import {Link} from "@mui/material";
 import Precios from "./components/productos/Precios";
 
 function App() {
+      let navigate = useNavigate();
     const {currentUser, logout, fetchCollection } = useAuth();
     const [isCollapsed] = useState(true);
 
@@ -55,11 +55,12 @@ function App() {
     const handleSignOut = async () => {
         console.log('LogOut clicked');
         await logout()
+        navigate('/',{ replace: true });
         setLoggedIn(false);
     };
 
     return (
-        <Router>
+        <>
             <Navbar bg="primary" data-bs-theme="dark" variant="dark" expand="lg">
                 <Container fluid className={isCollapsed ? "justify-content-center" : ""}>
                     <Navbar.Brand href="/">Cabuerniaventura</Navbar.Brand>
@@ -85,13 +86,13 @@ function App() {
             </Navbar>
             <Container className='root-container'>
 
-                <Routes>
+                <Routes >
                     <Route path="/" element={<Inicio/>}/>
                     <Route path="/about" element={<About/>}/>
                     <Route path="/precios" element={<Precios actividades={actividades} />}/>
                     <Route path="/registrate" element={<Register/>}/>
                     {loggedIn && (
-                        <Route path="/reserva" element={<Reserve/>}/>
+                        <Route path="/reserva" element={<Reserve actividades={actividades}/>}/>
                     )}
                 </Routes>
 
@@ -104,7 +105,7 @@ function App() {
                     </footer>
                 </Row>
             </Container>
-        </Router>
+            </>
     );
 }
 

@@ -7,7 +7,7 @@ import {
     signInWithEmailAndPassword,
     signOut
 } from 'firebase/auth';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs,getDoc } from 'firebase/firestore';
 import {auth,db} from "../utils/firebaseConfig";
 
 const AuthContext = React.createContext();
@@ -37,6 +37,7 @@ export function AuthProvider({children}) {
         setCurrentUser(null); // Establecer currentUser a null
 
     }
+
     function fetchCollection(collectionName) {
         return getDocs(collection(db, collectionName)).then((querySnapshot) => {
             return querySnapshot.docs.map(doc => ({

@@ -1,5 +1,5 @@
-// src/components/Auth/Register.js
-import React, { useState, useRef } from 'react';
+// src/components/Auth/Register.jsx
+import  { useState, useRef } from 'react';
 import { Button, FloatingLabel, Form, Container, Row, Col, Stack, InputGroup } from "react-bootstrap";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import './style.scss';
@@ -19,7 +19,7 @@ const Register = () => {
     };
 
     const toggleConfirmPasswordVisibility = () => {
-        setShowConfirmPassword(!showConfirmPassword);
+        console.log(setShowConfirmPassword(!showConfirmPassword));
     };
 
     async function handleSubmit(e) {
@@ -38,42 +38,47 @@ const Register = () => {
 
     return (
         <div className="pageContainerNavFooter">
-            <Row>
+            <Row className='justify-content-center' >
                 <Col xs={12} md={8}>
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmit} style={{padding:'15%'}}>
                         {error && <div className="error-message">{error}</div>}
-                        <FloatingLabel controlId="floatingName" label="Nombre" className="mb-3">
-                            <Form.Control size="sm" type="text" placeholder="Nombre" required />
+
+                        <FloatingLabel controlId="floatingName" label="Nombre" className="mb-3 floating-label-custom">
+                            <Form.Control size="sm" type="text" placeholder="Nombre" required/>
                         </FloatingLabel>
 
-                        <FloatingLabel controlId="floatingEmail" label="Correo Electrónico" className="mb-3">
-                            <Form.Control size="sm" type="email" placeholder="Correo Electrónico" ref={emailRef} required />
+                        <FloatingLabel controlId="floatingEmail" label="Correo Electrónico"
+                                       className="mb-3 floating-label-custom">
+                            <Form.Control size="sm" type="email" placeholder="Correo Electrónico" ref={emailRef}
+                                          required/>
                         </FloatingLabel>
 
-                        <FloatingLabel controlId="floatingPassword" label="Contraseña" className="mb-3">
+                        <FloatingLabel controlId="floatingPassword"
+                                       className="mb-3 floating-label-custom">
                             <InputGroup>
                                 <Form.Control
                                     type={showPassword ? 'text' : 'password'}
-                                    placeholder="Contraseña"
+                                    placeholder='Contraseña'
                                     ref={passwordRef}
                                     required
                                 />
-                                <Button variant="outline-secondary" onClick={togglePasswordVisibility}>
-                                    {showPassword ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
+                                <Button variant="outline-secondary" onClick={togglePasswordVisibility} style={{border:'1px solid ',borderColor:"white"}}>
+                                    {showPassword ? <BsFillEyeSlashFill style={{color:"white",}}/> : <BsFillEyeFill style={{color:"white"}}/>}
                                 </Button>
                             </InputGroup>
                         </FloatingLabel>
 
-                        <FloatingLabel controlId="floatingConfirmPassword" label="Confirmar Contraseña" className="mb-3">
+                        <FloatingLabel controlId="floatingConfirmPassword"
+                                       className="mb-3 floating-label-custom">
                             <InputGroup>
                                 <Form.Control
                                     type={showConfirmPassword ? 'text' : 'password'}
-                                    placeholder="Confirmar Contraseña"
+                                    placeholder='Confirmar Contraseña'
                                     ref={confirmPasswordRef}
                                     required
                                 />
-                                <Button variant="outline-secondary" onClick={toggleConfirmPasswordVisibility}>
-                                    {showConfirmPassword ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
+                                <Button variant="outline-secondary" onClick={toggleConfirmPasswordVisibility}style={{border:"1px solid",borderColor:"white"}}>
+                                    {showConfirmPassword ? <BsFillEyeSlashFill style={{color:"white",}}/> : <BsFillEyeFill style={{color:"white"}}/>}
                                 </Button>
                             </InputGroup>
                         </FloatingLabel>

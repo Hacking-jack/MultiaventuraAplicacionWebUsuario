@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bfd047fe-30cb-4fc5-8325-70d7e6552e1a" name="Changes" comment="trabajando en las actividades">
+      <change afterPath="$PROJECT_DIR$/src/dev/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dev/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dev/palette.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dev/previews.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dev/useInitial.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/productos/Actividad.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/productos/Actividad.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/productos/Precios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/productos/Precios.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/productos/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/productos/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/registrarse/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/registrarse/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/registrarse/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/registrarse/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +31,11 @@
         <option value="Python Script" />
         <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="com.intellij.reactbuddy.palette" />
+        <option value="com.intellij.reactbuddy.previews" />
+        <option value="com.intellij.reactbuddy.index" />
+        <option value="com.intellij.reactbuddy.useInitial" />
+        <option value="com.intellij.reactbuddy.README" />
       </list>
     </option>
   </component>
@@ -43,25 +57,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.Debug.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "/home/hackingjack/tfg2024/multiaventura/src/about",
-    "last_opened_file_path": "/home/hackingjack/tfg2024/multiaventura/src/components/productos",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/snap/webstorm/373/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.Debug.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;12.22.9&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;12.20.55&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/hackingjack/tfg2024/multiaventura/src/about&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/hackingjack/tfg2024/multiaventura/src/components/productos&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.React Buddy Preview.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/377/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -87,15 +105,30 @@
       <recent name="$PROJECT_DIR$/src/inicio" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
     <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000" useFirstLineBreakpoints="true">
       <method v="2" />
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
       </set>
     </attachedChunks>
   </component>
@@ -127,6 +160,10 @@
       <workItem from="1716284300151" duration="10660000" />
       <workItem from="1716321148317" duration="68000" />
       <workItem from="1716321222324" duration="5353000" />
+      <workItem from="1716397591996" duration="775000" />
+      <workItem from="1716566319362" duration="53000" />
+      <workItem from="1716734162799" duration="519000" />
+      <workItem from="1716734692193" duration="4963000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />

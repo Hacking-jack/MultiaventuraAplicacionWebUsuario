@@ -8,9 +8,10 @@ const Actividad = ({nombre, descripcion, precioPersona, maximoIntegrantes, durac
         <div className='tarjeta'>
             <h3>{nombre}</h3>
             <p>{descripcion}</p>
-            <p>{precioPersona}</p>
-            <p>{maximoIntegrantes}</p>
-            <p>{duracion}</p>
+            <p>Precio por persona:{precioPersona}</p>
+            <p>Numero de integrantes:{maximoIntegrantes}</p>
+            <p>Duracion estimada:{duracion}</p>
+
         </div>
     );
 }

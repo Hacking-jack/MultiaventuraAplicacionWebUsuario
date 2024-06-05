@@ -1,6 +1,7 @@
 import {initializeApp} from "firebase/app";
 import {getAuth,setPersistence, browserLocalPersistence,onAuthStateChanged} from 'firebase/auth';
 import { getFirestore } from "firebase/firestore";
+import {getDatabase} from "firebase/database";
 
 
 // Your web app's Firebase configuration
@@ -10,7 +11,9 @@ const firebaseConfig = {
     projectId: "multiaventuras-111d7",
     storageBucket: "multiaventuras-111d7.appspot.com",
     messagingSenderId: "243957207615",
-    appId: "1:243957207615:web:9d0ac6d23078fbddb6de8a"
+    appId: "1:243957207615:web:9d0ac6d23078fbddb6de8a",
+    databaseURL: "https://multiaventuras-111d7-default-rtdb.europe-west1.firebasedatabase.app/"
+
 };
 
 // Initialize Firebase
@@ -22,6 +25,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
 
 const db = getFirestore(app);
+
+const realDb = getDatabase(app);
 
 onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -45,4 +50,4 @@ onAuthStateChanged(auth, (user) => {
             });
     });
 
-export {db, auth};
+export {db, auth,realDb};

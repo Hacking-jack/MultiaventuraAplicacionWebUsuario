@@ -1,12 +1,13 @@
-import React, { useRef } from 'react';
-import { Button, FloatingLabel, Form, Modal } from "react-bootstrap";
-import { Link } from "@mui/material";
-import { useAuth } from "../../contextProviders/AuthContext";
+import React, {useRef} from 'react';
+import {Button, FloatingLabel, Form, Modal} from "react-bootstrap";
+import {Link} from "@mui/material";
+import {useAuth} from "../../contextProviders/AuthContext";
 
-export default function Login({ showModal, handleCloseModal }) {
+export default function Login({showModal, handleCloseModal}) {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const { login } = useAuth();
+    const {login} = useAuth();
+
     async function handleSubmit(e) {
         e.preventDefault();
         try {
@@ -17,6 +18,12 @@ export default function Login({ showModal, handleCloseModal }) {
             console.error("Failed to log in");
         }
     }
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            handleSubmit(event);
+        }
+    };
 
     return (
         <Modal show={showModal} onHide={handleCloseModal}>
@@ -32,7 +39,8 @@ export default function Login({ showModal, handleCloseModal }) {
                             className="mb-3"
                         >
                             <Form.Control placeholder="Usuario"
-                                          aria-label="Usuario" aria-describedby="nombre-usuario" ref={emailRef} required />
+                                          aria-label="Usuario" aria-describedby="nombre-usuario" ref={emailRef}
+                                          onKeyPress={handleKeyPress} required/>
                         </FloatingLabel>
                     </Form.Group>
 
@@ -43,7 +51,8 @@ export default function Login({ showModal, handleCloseModal }) {
                             className="mb-3"
                         >
                             <Form.Control type="password" placeholder="Contraseña"
-                                          aria-label="Contraseña" aria-describedby="contrasena" ref={passwordRef} required />
+                                          aria-label="Contraseña" aria-describedby="contrasena" ref={passwordRef}
+                                          onKeyPress={handleKeyPress} required/>
                         </FloatingLabel>
                     </Form.Group>
                     <Link href="/reserva">Registrate</Link>

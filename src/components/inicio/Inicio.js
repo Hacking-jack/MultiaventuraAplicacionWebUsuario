@@ -1,7 +1,6 @@
 import React from 'react';
 import {Col, Row, Container, Carousel, Image} from "react-bootstrap";
 import './style.scss'
-import zIndex from "@mui/material/styles/zIndex";
 
 const Inicio = () => {
     return (

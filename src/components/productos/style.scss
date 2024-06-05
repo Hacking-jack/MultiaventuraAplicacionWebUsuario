@@ -22,11 +22,17 @@
 }
 
 .tarjeta {
+  padding: 15%;
   box-sizing: border-box;
   border: solid 3px white;
   border-radius: 15px;
   margin: 1vh;
   height: 80vh;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.tarjeta:hover{
+  background: #8f96a3;
 
 }
 

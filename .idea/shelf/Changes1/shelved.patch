@@ -1,0 +1,68 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"bfd047fe-30cb-4fc5-8325-70d7e6552e1a\" name=\"Changes\" comment=\"trabajando en las actividades\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/components/productos/Actividad.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/components/productos/Actividad.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/components/productos/Precios.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/components/productos/Precios.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/components/productos/style.scss\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/components/productos/style.scss\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Sass File\" />\n        <option value=\"Python Script\" />\n        <option value=\"SCSS File\" />\n        <option value=\"JavaScript File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 1\n}</component>\n  <component name=\"ProjectId\" id=\"2fPSnHSXiKS7aG3kjnEgabtwK8D\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"JavaScript Debug.Debug.executor\": \"Debug\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\",\n    \"kotlin-language-version-configured\": \"true\",\n    \"last_directory_selection\": \"/home/hackingjack/tfg2024/multiaventura/src/about\",\n    \"last_opened_file_path\": \"/home/hackingjack/tfg2024/multiaventura/src/components/productos\",\n    \"list.type.of.created.stylesheet\": \"SCSS\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\",\n    \"ts.external.directory.path\": \"/snap/webstorm/373/plugins/javascript-plugin/jsLanguageServicesImpl/external\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"ReactDesignerToolWindowState\">\n    <option name=\"myId2Visible\">\n      <map>\n        <entry key=\"com.haulmont.rcb.reactComponents\" value=\"false\" />\n        <entry key=\"com.haulmont.rcb.reactInspector\" value=\"false\" />\n        <entry key=\"com.intellij.reactbuddy.reactComponents\" value=\"false\" />\n        <entry key=\"com.intellij.reactbuddy.reactInspector\" value=\"false\" />\n        <entry key=\"com.intellij.reactbuddy.storybook\" value=\"false\" />\n      </map>\n    </option>\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/components/productos\" />\n      <recent name=\"$PROJECT_DIR$/src/components/reserva\" />\n      <recent name=\"$PROJECT_DIR$/public\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/components\" />\n      <recent name=\"$PROJECT_DIR$/src\" />\n      <recent name=\"$PROJECT_DIR$/public/icons\" />\n      <recent name=\"$PROJECT_DIR$/src/about\" />\n      <recent name=\"$PROJECT_DIR$/src/inicio\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"Debug\" type=\"JavascriptDebugType\" uri=\"http://localhost:3000\" useFirstLineBreakpoints=\"true\">\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"bfd047fe-30cb-4fc5-8325-70d7e6552e1a\" name=\"Changes\" comment=\"\" />\n      <created>1713701385065</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1713701385065</updated>\n      <workItem from=\"1713701386072\" duration=\"1740000\" />\n      <workItem from=\"1713718262034\" duration=\"19061000\" />\n      <workItem from=\"1714062543053\" duration=\"673000\" />\n      <workItem from=\"1714063227983\" duration=\"677000\" />\n      <workItem from=\"1714067273475\" duration=\"3197000\" />\n      <workItem from=\"1714210559255\" duration=\"2317000\" />\n      <workItem from=\"1714216784215\" duration=\"1334000\" />\n      <workItem from=\"1714226528522\" duration=\"5338000\" />\n      <workItem from=\"1714298299632\" duration=\"7407000\" />\n      <workItem from=\"1714902101071\" duration=\"8008000\" />\n      <workItem from=\"1715335067390\" duration=\"1131000\" />\n      <workItem from=\"1715336267960\" duration=\"16776000\" />\n      <workItem from=\"1715390347931\" duration=\"13681000\" />\n      <workItem from=\"1715520983319\" duration=\"787000\" />\n      <workItem from=\"1715599798246\" duration=\"642000\" />\n      <workItem from=\"1715795885099\" duration=\"11000\" />\n      <workItem from=\"1716021997147\" duration=\"29136000\" />\n      <workItem from=\"1716284300151\" duration=\"10660000\" />\n      <workItem from=\"1716321148317\" duration=\"68000\" />\n      <workItem from=\"1716321222324\" duration=\"5353000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"first commit\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1713701610550</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1713701610550</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"first commit\" />\n    <MESSAGE value=\"trabajando en las actividades\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"trabajando en las actividades\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c5bc5cc56669f7c651e9875d01fa2b61696ccf89)
++++ b/.idea/workspace.xml	(date 1716743815488)
+@@ -4,12 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="bfd047fe-30cb-4fc5-8325-70d7e6552e1a" name="Changes" comment="trabajando en las actividades">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/components/productos/Actividad.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/productos/Actividad.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/components/productos/Precios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/productos/Precios.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/components/productos/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/productos/style.scss" afterDir="false" />
+-    </list>
++    <list default="true" id="bfd047fe-30cb-4fc5-8325-70d7e6552e1a" name="Changes" comment="trabajando en las actividades" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -43,25 +38,25 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "JavaScript Debug.Debug.executor": "Debug",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "kotlin-language-version-configured": "true",
+-    "last_directory_selection": "/home/hackingjack/tfg2024/multiaventura/src/about",
+-    "last_opened_file_path": "/home/hackingjack/tfg2024/multiaventura/src/components/productos",
+-    "list.type.of.created.stylesheet": "SCSS",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "settings.editor.selected.configurable": "preferences.pluginManager",
+-    "ts.external.directory.path": "/snap/webstorm/373/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;JavaScript Debug.Debug.executor&quot;: &quot;Debug&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_directory_selection&quot;: &quot;/home/hackingjack/tfg2024/multiaventura/src/about&quot;,
++    &quot;last_opened_file_path&quot;: &quot;/home/hackingjack/tfg2024/multiaventura/src/components/productos&quot;,
++    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
++    &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/373/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="ReactDesignerToolWindowState">
+     <option name="myId2Visible">
+       <map>
