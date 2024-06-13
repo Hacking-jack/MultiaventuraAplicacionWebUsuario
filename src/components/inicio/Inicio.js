@@ -55,7 +55,7 @@ const Inicio = () => {
                 </Carousel>
             </Row>
             <Row>
-                <div className='pageContainerFooter' style={{paddingTop: '10vh'}}>
+                <Col className='justify-content-center' style={{paddingTop: '10vh',paddingBottom:'10vh',color:'white'}}>
                     <h1>Descubre Cabueniaventura</h1>
                     <p>¡Bienvenidos a Cabueniaventura!</p>
                     <p>En Cantabria, te esperamos en nuestro Parque de Ocio y Multiaventura con Alojamientos y nuestra
@@ -70,7 +70,7 @@ const Inicio = () => {
                     <p>Abrimos todo el año y tenemos los mejores precios y tarifas para ti y tu familia. También tenemos
                         entrada de niños solos.</p>
 
-                </div>
+                </Col>
             </Row>
         </>
     );

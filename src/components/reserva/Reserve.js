@@ -8,17 +8,20 @@ import {v4 as uuidv4} from 'uuid';
 import 'react-calendar/dist/Calendar.css';
 import './style.scss';
 import {CalendarDatetimePicker} from "./CalendarDatetimePicker";
-import {HiBattery100} from "react-icons/hi2"; // Importa tus estilos CSS
+import {useLocation} from "react-router-dom";
+
 
 const Reserve = ({actividades}) => {
+    const location = useLocation();
+    const {index} = location.state || {index: ''}; // Establecer un valor por defecto
 
     const [error, setError] = useState('');
 
     const {currentUser} = useAuth();
 
-    const [selectedValue, setSelectedValue] = useState(null);
+    const [selectedValue, setSelectedValue] = useState(index);
     const [reserva, setReserva] = useState(false);
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedDateHour, setSelectedDateHour] = useState(null);
 
 
     const fecha = useRef();
@@ -27,6 +30,15 @@ const Reserve = ({actividades}) => {
     const ovservaciones = useRef();
 
     const [reservas, setReservas] = useState([]);
+
+
+    const handleDateHourChange = (dateHour) => {
+        if (selectedDateHour === null || dateHour.getTime() !== selectedDateHour.getTime()) {
+            setSelectedDateHour(dateHour);
+            console.log("Selected Date and Hour: ", dateHour);
+        }
+    };
+
 
     const handleCloseModal = () => setReserva(false);
 
@@ -55,9 +67,12 @@ const Reserve = ({actividades}) => {
             const uuid = uuidv4();
             const dataRef = ref(realDb, `Reservas/${uuid}`);
             set(dataRef, {
-                user: currentUser.uid,
-                fecha: fecha,
+                usuario: currentUser.uid,
+                usuarioCorreo: currentUser.email,
+                precio: integrantes.current.value * actividades[selectedValue].precioPersona,
+                fecha: selectedDateHour.toISOString(),
                 actividad: actividades[selectedValue].id,
+                actividadNombre: actividades[selectedValue].nombre,
                 integrantes: integrantes.current.value,
                 ovservaciones: ovservaciones.current.value,
 
@@ -67,6 +82,7 @@ const Reserve = ({actividades}) => {
             }).catch((error) => {
                 console.error('Error writing data: ', error);
             });
+            window.location.reload();
         }
     };
     const handleChange = (event) => {
@@ -76,13 +92,14 @@ const Reserve = ({actividades}) => {
         <>
             <Row className="pageRow">
                 <Container className='reserve-form'>
-                    <Row className='justify-content-center' >
-                        <Col xs={12} md={8} >
-                            <Form onSubmit={handleSubmit} style={{marginTop:'5vh'}}>
+                    <Row className='justify-content-center '>
+                        <Col xs={12} md={8}>
+                            <Form onSubmit={handleSubmit} style={{marginTop: '5vh'}}>
 
                                 {error && <div className="error-message">{error}</div>}
 
-                                <h1>Reserva tu actividad </h1>
+                                <h1 style={{fontSize: '2.5rem', marginBottom: '2rem', color: 'white'}}>Reserva tu
+                                    actividad</h1>
                                 <Form.Select value={selectedValue} onChange={handleChange}
                                              aria-label="Default select example"
                                              ref={actividad}>
@@ -95,7 +112,11 @@ const Reserve = ({actividades}) => {
                                     <>
                                         <div style={{position: 'relative'}}>
                                             <CalendarDatetimePicker reservas={reservas}
-                                                                    actividad={actividades[selectedValue]}/>
+                                                                    actividad={actividades[selectedValue]}
+                                                                    setSelectedDateHour={handleDateHourChange}
+                                                                    startHour={'09:36'}
+                                                                    endHour={'22:00'}
+                                            />
                                             <FloatingLabel controlId="Integrantes" label="Integrantes"
                                                            className="mb-3 floating-label-custom">
                                                 <Form.Control size="sm" type="number" placeholder="Integrantes" min='1'
@@ -103,16 +124,19 @@ const Reserve = ({actividades}) => {
                                                               max={actividades[selectedValue].maximoIntegrantes}
                                                               required/>
                                             </FloatingLabel>
-                                            <FloatingLabel controlId="Comentarios" label="Añade Observaciones"
-                                                           className="mb-3 floating-label-custom">
-                                                <Form.Control size="sm" as="textarea" placeholder="Observaciones "
-                                                              ref={ovservaciones}/>
-                                            </FloatingLabel>
+
                                         </div>
+                                        <FloatingLabel controlId="Comentarios" label="Añade Observaciones"
+                                                       className="mb-3 floating-label-custom"
+                                                       style={{flex: '1 1 auto'}}>
+                                            <Form.Control size="sm" as="textarea" placeholder="Observaciones "
+                                                          ref={ovservaciones} style={{resize: 'vertical'}}/>
+                                        </FloatingLabel>
+                                        <Button variant="primary" type="submit"
+                                        style={{alignSelf: 'flex-start'}}>Reserva</Button>
                                     </>
                                 }
-                                <Button variant="primary" type="submit"
-                                        style={{alignSelf: 'flex-start'}}>Reserva</Button>
+
                             </Form>
                         </Col>
                     </Row>

@@ -1,18 +1,24 @@
 // src/components/Auth/Register.jsx
-import  { useState, useRef } from 'react';
-import { Button, FloatingLabel, Form, Container, Row, Col, Stack, InputGroup } from "react-bootstrap";
-import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
+import {useState, useRef} from 'react';
+import {Button, FloatingLabel, Form, Row, Col, InputGroup} from "react-bootstrap";
+import {BsFillEyeFill, BsFillEyeSlashFill} from "react-icons/bs";
 import './style.scss';
 import {useAuth} from "../../contextProviders/AuthContext";
+import {collection, addDoc} from "firebase/firestore";
+import {db} from "../../utils/firebaseConfig";
+import {useNavigate} from "react-router-dom";
 
 const Register = () => {
+    const navigate = useNavigate();
+
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [error, setError] = useState('');
+    const username = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const confirmPasswordRef = useRef();
-    const { signup } = useAuth();
+    const {signup} = useAuth();
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -24,27 +30,38 @@ const Register = () => {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        setError('')
         if (passwordRef.current.value !== confirmPasswordRef.current.value) {
             return setError('Passwords do not match');
         }
 
         try {
-            setError('');
-            await signup(emailRef.current.value, passwordRef.current.value);
-        } catch {
-            setError('Failed to create an account');
+            const user = await signup(emailRef.current.value, passwordRef.current.value)
+
+            // Añadir datos adicionales del usuario a Firestore
+            await addDoc(collection(db, 'users'), {
+                user_id: user.uid,
+                comentarios: 'Reservar',
+                display_name: username.current.value,
+                telefono: '',
+                createdAt: new Date(),
+            });
+
+            console.log('User logged in and data added to Firestore:', user);
+            navigate('/')
+        } catch (error) {
+            setError('Failed to log in and add data to Firestore');
         }
     }
 
     return (
-        <div className="pageContainerNavFooter">
-            <Row className='justify-content-center' >
+            <Row className='justify-content-center pageRow '>
                 <Col xs={12} md={8}>
-                    <Form onSubmit={handleSubmit} style={{padding:'15%'}}>
+                    <Form onSubmit={handleSubmit} style={{padding: '15%'}}>
                         {error && <div className="error-message">{error}</div>}
 
                         <FloatingLabel controlId="floatingName" label="Nombre" className="mb-3 floating-label-custom">
-                            <Form.Control size="sm" type="text" placeholder="Nombre" required/>
+                            <Form.Control size="sm" type="text" placeholder="Nombre" ref={username} required/>
                         </FloatingLabel>
 
                         <FloatingLabel controlId="floatingEmail" label="Correo Electrónico"
@@ -62,8 +79,10 @@ const Register = () => {
                                     ref={passwordRef}
                                     required
                                 />
-                                <Button variant="outline-secondary" onClick={togglePasswordVisibility} style={{border:'1px solid ',borderColor:"white"}}>
-                                    {showPassword ? <BsFillEyeSlashFill style={{color:"white",}}/> : <BsFillEyeFill style={{color:"white"}}/>}
+                                <Button variant="outline-secondary" onClick={togglePasswordVisibility}
+                                        style={{border: '1px solid ', borderColor: "white"}}>
+                                    {showPassword ? <BsFillEyeSlashFill style={{color: "white",}}/> :
+                                        <BsFillEyeFill style={{color: "white"}}/>}
                                 </Button>
                             </InputGroup>
                         </FloatingLabel>
@@ -77,8 +96,10 @@ const Register = () => {
                                     ref={confirmPasswordRef}
                                     required
                                 />
-                                <Button variant="outline-secondary" onClick={toggleConfirmPasswordVisibility}style={{border:"1px solid",borderColor:"white"}}>
-                                    {showConfirmPassword ? <BsFillEyeSlashFill style={{color:"white",}}/> : <BsFillEyeFill style={{color:"white"}}/>}
+                                <Button variant="outline-secondary" onClick={toggleConfirmPasswordVisibility}
+                                        style={{border: "1px solid", borderColor: "white"}}>
+                                    {showConfirmPassword ? <BsFillEyeSlashFill style={{color: "white",}}/> :
+                                        <BsFillEyeFill style={{color: "white"}}/>}
                                 </Button>
                             </InputGroup>
                         </FloatingLabel>
@@ -89,7 +110,6 @@ const Register = () => {
                     </Form>
                 </Col>
             </Row>
-        </div>
     );
 }
 

@@ -57,7 +57,7 @@ export default function Login({showModal, handleCloseModal}) {
                                           onKeyPress={handleKeyPress} required/>
                         </FloatingLabel>
                     </Form.Group>
-                    <Link href="/reserva">Registrate</Link>
+                    <Link href="/register">Registrate</Link>
                 </Form>
             </Modal.Body>
             <Modal.Footer>

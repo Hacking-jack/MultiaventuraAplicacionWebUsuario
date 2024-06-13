@@ -13,7 +13,7 @@ function SampleNextArrow(props) {
     return (
         <div
             className={className}
-            style={{...style, display: "block", background: "red"}}
+            style={{...style, display: "block", }}
             onClick={onClick}
         />
 
@@ -25,7 +25,7 @@ function SamplePrevArrow(props) {
     return (
         <div
             className={className}
-            style={{...style, display: "block", background: "green"}}
+            style={{...style, display: "block", }}
             onClick={onClick}
         />
     );
@@ -79,7 +79,7 @@ const Precios = ({actividades}) => {
                         <div key={index}>
                             <Actividad nombre={actividad.nombre} descripcion={actividad.descripcion}
                                        duracion={actividad.duracion} maximoIntegrantes={actividad.maximoIntegrantes}
-                                       precioPersona={actividad.precioPersona}
+                                       precioPersona={actividad.precioPersona} index={index}
                             />
                         </div>
                     ))}

@@ -5,6 +5,7 @@ $tertiary: #CCC392 !default;
 $danger: #dc3545 !default;
 $info: #3d7895 !default;
 $success: #898C3F !default;
+$white: white !default;
 
 
 $container-max-widths: (
@@ -70,7 +71,7 @@ $font-family-base: (
 .pageRow {
   margin: 0;
   padding: 0;
-  min-height: 85.4vh;
+  min-height: 87vh;
   box-sizing: border-box;
   justify-content: center;
 

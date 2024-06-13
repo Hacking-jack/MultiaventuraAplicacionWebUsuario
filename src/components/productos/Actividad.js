@@ -1,18 +1,28 @@
 // About.js
-import React from 'react';
+import React, {useState} from 'react';
 import './style.scss'
+import {Button} from "react-bootstrap";
+import {useNavigate} from 'react-router-dom';
+import {useAuth} from "../../contextProviders/AuthContext";
 
+const Actividad = ({nombre, descripcion, precioPersona, maximoIntegrantes, duracion, index}) => {
+    const navigate = useNavigate();
+    const {currentUser}= useAuth()
+    const [loggedIn] = useState(!!currentUser);
 
-const Actividad = ({nombre, descripcion, precioPersona, maximoIntegrantes, duracion}) => {
+    const handleReservarClick = () => {
+        loggedIn ? navigate('/reserva', {state: {index}}) : navigate('/') ;
+    };
+
     return (
         <div className='tarjeta'>
             <h3>{nombre}</h3>
-            <p>{descripcion}</p>
-            <p>Precio por persona:{precioPersona}</p>
-            <p>Numero de integrantes:{maximoIntegrantes}</p>
-            <p>Duracion estimada:{duracion}</p>
-
-        </div>
+            <p className='descripcion'>{descripcion}</p>
+            <p className='precio'>Precio por persona: {precioPersona}</p>
+            <p className='integrantes'>Número de integrantes: {maximoIntegrantes}</p>
+            <p className='duracion'>Duración estimada: {duracion}</p>
+            {loggedIn ? <Button onClick={handleReservarClick}>Reservar</Button> :<></> }
+            </div>
     );
 }
 

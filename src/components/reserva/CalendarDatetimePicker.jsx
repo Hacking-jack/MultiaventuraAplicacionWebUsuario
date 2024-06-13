@@ -1,140 +1,150 @@
-import { Calendar } from "react-calendar";
-import React, { useState } from "react";
-import { useAuth } from "../../contextProviders/AuthContext";
+import {Calendar} from "react-calendar";
+import React, {useState, useEffect} from "react";
+import {useAuth} from "../../contextProviders/AuthContext";
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-clock/dist/Clock.css';
 import './style.scss';
-import { Col, Container, Row } from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
 
-export const CalendarDatetimePicker = ({ reservas, actividad, horaInicio, horaFin, intervaloHora }) => {
-    const { currentUser } = useAuth();
-    const [selectedDate, setSelectedDate] = useState(null);
+export const CalendarDatetimePicker = ({reservas, actividad, startHour, endHour, setSelectedDateHour}) => {
+    const {currentUser} = useAuth();
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedHour, setSelectedHour] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [hours, setHours] = useState([]);
 
-    const handleDateClick = date => {
-        setSelectedDate(date);
+    useEffect(() => {
+        setHours(generateHours());
+        setLoading(false);
+    }, []);
+
+    useEffect(() => {
+        if (selectedDate != null) {
+            setHours(classifyHours);
+        }
+    }, [selectedDate]);
+
+    useEffect(() => {
+        if (selectedDate && selectedHour) {
+            const combinedDate = new Date(selectedDate);
+            const [hour, minute] = selectedHour.split(':').map(Number);
+            combinedDate.setHours(hour);
+            combinedDate.setMinutes(minute);
+            setSelectedDateHour(combinedDate);
+        }
+    }, [selectedDate, selectedHour, setSelectedDateHour]);
+
+    const generateHours = () => {
+        const hours = [];
+        const startHourStr = startHour.replace(':', '').padStart(4, '0');
+        const startHourMinutes = parseInt(startHourStr.slice(-2), 10);
+        const startHourHour = parseInt(startHourStr.slice(0, -2), 10);
+
+        const endHourStr = endHour.replace(':', '').padStart(4, '0');
+        const endHourMinutes = parseInt(endHourStr.slice(-2), 10);
+        const endHourHour = parseInt(endHourStr.slice(0, -2), 10);
+
+        let currentHour = startHourHour;
+        let currentMinute = startHourMinutes;
+
+        while (currentHour <= endHourHour || (currentHour === endHourHour && currentMinute <= endHourMinutes)) {
+            const hourStr = currentHour.toString().padStart(2, '0');
+            const minuteStr = currentMinute.toString().padStart(2, '0');
+            hours.push([`${hourStr}:${minuteStr}`, false]);
+            currentHour++;
+        }
+        return hours;
     };
 
-    const combineDateAndTime = (date, time) => {
-        if (!date || !time) return null;
-        const [hours, minutes] = time.split(':');
-        const combinedDate = new Date(date);
-        combinedDate.setHours(hours, minutes);
-        return combinedDate;
+    const handleDateClick = (date) => {
+        try {
+            if (date.getTime() !== selectedDate.getTime()) {
+                const fe = new Date(date);
+                setSelectedDate(fe);
+            }
+        } catch (error) {
+            console.error("Error setting selected date:", error);
+        }
     };
 
-    const handleSubmit = () => {
-        const combinedDateTime = combineDateAndTime(selectedDate, selectedHour);
-        console.log("Selected DateTime: ", combinedDateTime);
-        // Aquí puedes agregar la lógica para manejar la reserva
-    };
+    function classifyHours() {
+        let copia = generateHours();
+        let [horaDur, minutoDur] = actividad.duracion.split(':').map(Number);
 
-    const tileClassName = ({ date, view }) => {
-        if (view === 'month' && reservas && actividad !== null) {
-            let dateString = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-            let compara = Date.parse(dateString);
+        if (minutoDur !== 0 && minutoDur != null) {
+            horaDur += 1;
+        }
 
-            for (const reservaId in reservas) {
-                if (reservas.hasOwnProperty(reservaId)) {
-                    const dato = reservas[reservaId];
-                    if (Date.parse(dato.fecha) === compara && actividad.id === dato.actividad) {
-                        if (currentUser.uid === dato.user) {
-                            return 'myReserve';
-                        } else {
+        for (const reservaId in reservas) {
+            if (reservas.hasOwnProperty(reservaId)) {
+                let fecha = new Date(reservas[reservaId].fecha);
+                if (selectedDate.getDate() === fecha.getDate() && selectedDate.getMonth() === fecha.getMonth() && selectedDate.getFullYear() === fecha.getFullYear() && reservas[reservaId].actividad === actividad.id ) {
+                    for (let h of copia) {
+                        let [hora, minuto] = h[0].split(":").map(Number);
+                        if ((fecha.getHours() === hora && fecha.getMinutes() === minuto) || hora <= (fecha.getHours() + horaDur)) {
+                            h[1] = true;
                         }
                     }
                 }
             }
         }
-        return null;
-    };
-
-    const disableTiles = ({ date }) => {
-        let dateString = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-        let compara = Date.parse(dateString);
-        console.log({compara})
-        let respuesta = false;
-
-        if (date.getDay() === 0) {
-            respuesta = true;
-        }
-
-        for (const reservaId in reservas) {
-            if (reservas.hasOwnProperty(reservaId)) {
-                const dato = reservas[reservaId];
-                if (Date.parse(dato.fecha) === compara && actividad.id === dato.actividad) {
-
-                    respuesta = true;
-                }
-            }
-        }
-        console.log(respuesta)
-        return respuesta;
-    };
+        return copia;
+    }
 
     return (
-        <Container style={{ marginTop: '3vh', marginBottom: '3vh' }}>
+        <Container style={{marginTop: '3vh', marginBottom: '3vh'}}>
             <Row>
                 <Col>
                     <Calendar
                         className="custom-calendar"
-                        initialDate={Date.now()}
-                        tileDisabled={disableTiles}
-                        value={selectedDate}
-                        tileClassName={tileClassName}
+                        minDate={new Date( Date.now())}
                         onClickDay={handleDateClick}
-                        required
+                        value={selectedDate}
                     />
                 </Col>
                 <Col>
-                    <HourPicker
-                        startHour={horaInicio}
-                        endHour={horaFin}
-                        numHours={intervaloHora}
-                        selectedHour={selectedHour}
-                        setSelectedHour={setSelectedHour}
-                    />
+                    <Container fluid className="d-flex flex-column" style={{height: '100%'}}>
+                        {loading ? <Row className='flex-grow-1'>loading</Row> :
+                            <TimePicker
+                                hours={hours}
+                                selectedTime={(hora) => {
+                                    setSelectedHour(hora);
+                                }}
+                            />
+                        }
+                    </Container>
                 </Col>
             </Row>
-
         </Container>
     );
-}
+};
 
-const HourPicker = ({ startHour = 0, endHour = 12, numHours = 12, selectedHour, setSelectedHour }) => {
-    const generateHours = (startHour, endHour, numHours) => {
-        const hours = [];
-        const start = parseInt(startHour, 10);
-        const end = endHour ? parseInt(endHour, 10) : start + numHours;
+const TimePicker = ({hours, selectedTime}) => {
+    const [selectedButton, setSelectedButton] = useState(null);
 
-        for (let i = start; i < end; i++) {
-            hours.push(i.toString().padStart(2, '0') + ':00');
-        }
-        return hours;
+    const handleButtonClick = (hour) => {
+        // Actualiza el estado del botón seleccionado
+        setSelectedButton(hour === selectedButton ? null : hour);
+        // Llama a la función para devolver la hora seleccionada
+        selectedTime(hour);
     };
-
-    const hours = generateHours(startHour, endHour, numHours);
-
     return (
-        <Container fluid className="d-flex flex-column" style={{ height: '100%' }}>
-            <Row className='flex-grow-1'>
-                {hours.map((hour, index) => (
-                    <Col
-                        key={index}
-                        xs={6}
-                        className="p-2 align-items-stretch"
-                        style={{
-                            border: '1px solid #ddd',
-                            textAlign: 'center',
-                            cursor: 'pointer',
-                            backgroundColor: selectedHour === hour ? '#d3d3d3' : 'white',
-                        }}
-                        onClick={() => setSelectedHour(hour)}
+        <Row className='flex-grow-1'>
+            {hours.map((hour) => (
+                <Col
+                    key={hour[0]}
+                    xs={6}
+                    className="align-items-stretch timeSchedule"
+                >
+                    <Button
+                        className={`timeButton ${hour[0] === selectedButton ? 'selected' : ''}`}
+                        disabled={hour[1]}
+                        onClick={() => handleButtonClick(hour[0])}
                     >
-                        {hour}
-                    </Col>
-                ))}
-            </Row>
-        </Container>
+                        {hour[0]}
+                    </Button>
+                </Col>
+            ))}
+        </Row>
     );
 };

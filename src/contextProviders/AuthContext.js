@@ -7,8 +7,8 @@ import {
     signInWithEmailAndPassword,
     signOut
 } from 'firebase/auth';
-import { collection, getDocs,getDoc } from 'firebase/firestore';
-import {auth,db} from "../utils/firebaseConfig";
+import {collection, getDocs, getDoc} from 'firebase/firestore';
+import {auth, db} from "../utils/firebaseConfig";
 
 const AuthContext = React.createContext();
 
@@ -19,12 +19,23 @@ export function useAuth() {
 export function AuthProvider({children}) {
 
 
-
     const [currentUser, setCurrentUser] = useState(null);
 
     function signup(email, password) {
-        createUserWithEmailAndPassword(auth, email, password);
-        login(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log('User registered:', user);
+                return signInWithEmailAndPassword(auth, email, password);
+            })
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log('User logged in:', user);
+                return user;
+            })
+            .catch((error) => {
+                console.error('Error during signup/login:', error);
+            });
     }
 
     function login(email, password) {
@@ -33,8 +44,8 @@ export function AuthProvider({children}) {
 
     function logout() {
         signOut(auth);
-        localStorage.clear(); // Limpiar localStorage
-        setCurrentUser(null); // Establecer currentUser a null
+        localStorage.clear();
+        setCurrentUser(null);
 
     }
 
@@ -46,6 +57,7 @@ export function AuthProvider({children}) {
             }));
         });
     }
+
     useEffect(() => {
         // Manejar cambios en la autenticación del usuario
         const unsubscribe = auth.onAuthStateChanged((user) => {
